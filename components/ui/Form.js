@@ -1,7 +1,23 @@
 import styled from "styled-components";
 
-const Form = styled.form`
+export const Form = styled.form`
   width: 20%;
 `;
 
-export default Form
+export const Error = styled.p`
+    background-color: red;
+    padding: .5rem;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+`;
+
+export const Input = styled.input`
+  border-radius: 0;
+  padding: 15px 20px;
+  width: 100%;
+`;
