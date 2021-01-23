@@ -1,65 +1,55 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, {useState} from "react"
+import Router from 'next/router';
+import Layout from "../components/layout/Layout";
+import Button from "../components/ui/Button";
+import Loader from "../components/layout/Spinner";
+import {Form, Input, Error} from "../components/ui/Form";
+import firebase from "../firebase";
+import useValidation from "../hooks/useValidation";
+import validateLogin from "../validations/validateLogin";
+
+const INITIAL_STATE = {
+    email: '',
+    password: ''
+}
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    const [error, setError] = useState(false);
+    const {values, errors, handleSubmit, handleChange, handleBlur} = useValidation(INITIAL_STATE, validateLogin, startLogin);
+    const {email, password} = values;
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+    async function startLogin() {
+        try {
+            await firebase.login(email, password);
+            await Router.push('/');
+        } catch (error) {
+            console.error('Login Error ', error.message);
+            setError(error.message);
+        }
+    }
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    return (
+        <>
+            <Layout>
+                <div className="joinOuterContainer">
+                    {error && <Error>{error} </Error>}
+                    <Loader/>
+                    <Form onSubmit={handleSubmit} noValidate>
+                        <h1 className="heading">Join</h1>
+                        <div>
+                            <Input id="email" name="email" placeholder="Email" type="text" value={email}
+                                   onChange={handleChange} onBlur={handleBlur}/>
+                            {errors.email && <Error>{errors.email}</Error>}
+                        </div>
+                        <div>
+                            <Input id="password" name="password" placeholder="Password" type="password" value={password}
+                                   onChange={handleChange} onBlur={handleBlur}/>
+                            {errors.password && <Error>{errors.password}</Error>}
+                        </div>
+                        <Button type="submit">Sign In</Button>
+                    </Form>
+                </div>
+            </Layout>
+        </>
+    )
 }
