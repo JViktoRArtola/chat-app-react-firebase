@@ -18,7 +18,7 @@ export const Input = ({filter, uid}) => {
     }
 
     return (
-        <div style={{position: 'absolute', bottom: 20, width: '70%',}}>
+        <div style={{position: 'absolute', bottom: 20, width: '82%',}}>
             <input
                 className={styles.input}
                 type="text"

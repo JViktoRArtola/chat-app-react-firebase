@@ -12,8 +12,8 @@ const Messages = ({filter, user}) => {
 
     return (
         messages ?
-            <div id='scrollable' style={{height: '100vh', overflowY: 'scroll', padding: '2% 0'}}>
-                <div style={{marginBottom: '7em'}}>
+            <div id='scrollable' style={{height: '88vh', overflowY: 'scroll', padding: '2% 0'}}>
+                <div >
                     {messages.filter(item => item.id !== 'Status').map((message, i) =>
                         <Message key={i} message={message.text} owner={message.uid} user={user.uid} date={message.date}/>
                     )}
