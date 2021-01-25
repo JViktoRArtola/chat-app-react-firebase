@@ -36,6 +36,7 @@ export const Touchable = styled.button`
     border: none;
     cursor: pointer;
     color: white;
+    border-bottom: 2px solid #575763;
 `;
 
 export const Text = styled.p`
