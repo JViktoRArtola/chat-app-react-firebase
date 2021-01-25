@@ -1,9 +1,12 @@
-.form {
-    display: flex;
-    border-top: 2px solid #D3D3D3;
-}
+import styled from "styled-components";
 
-.input {
+export const Container = styled.div`
+  position: absolute;
+  bottom: 20px;
+  width: 82%;
+`;
+
+export const InputText = styled.input`
     height: 50px;
     width: 90%;
     padding: 12px;
@@ -11,13 +14,9 @@
     border-radius: 4px;
     box-sizing: border-box;
     resize: vertical;
-}
+`;
 
-/*input:focus, textarea:focus, select:focus{*/
-/*    outline: none;*/
-/*}*/
-
-.sendButton {
+export const Button = styled.button`
     color: #fff;
     text-decoration: none;
     background: #2979FF;
@@ -25,5 +24,4 @@
     border: none;
     height: 50px;
     margin-left: -48px;
-
-}
+`;
