@@ -4,12 +4,14 @@ import FirebaseContext from "../../firebase/context";
 import styles from '../../styles/Chat.module.css'
 import Messages from "./Messages";
 import useOnline from "../../hooks/useOnline";
+import Logout from "./Logout";
 
 export const Chat = () => {
     const {users} = useUsers('users');
     const {user, firebase} = useContext(FirebaseContext);
     const [collection, setCollection] = useState(null);
     const [final, setFinal] = useState('');
+    const [modal, setModal] = useState(false);
     useOnline(user.uid)
 
     useEffect(() => {
@@ -46,9 +48,7 @@ export const Chat = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.out}>
-                <button className={styles.button} onClick={() => firebase.logout()}>Salir</button>
-            </div>
+            <Logout show={modal} setModal={setModal}/>
             <div className={styles.lateral}>
                 <h2 className={styles.title}>Contacts</h2>
                 <div className={styles.leftContainer}>

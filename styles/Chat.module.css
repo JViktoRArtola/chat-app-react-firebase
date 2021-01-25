@@ -10,21 +10,6 @@
     overflow: hidden;
 }
 
-.out {
-    position: absolute;
-    top: 1.5rem;
-    right: .9rem;
-}
-
-.button {
-    padding: 1.1em 0.8em;
-    border-radius: 20em;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
 .title {
     text-align: center;
     color: white;
