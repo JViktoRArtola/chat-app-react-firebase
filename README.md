@@ -6,7 +6,7 @@
 
 ## Learn More
 
-######[🚀 Deployed with Vercel](https://vercel.com/)
+[🚀 Deployed with Vercel](https://vercel.com/)
 
 To learn more about Next.js, take a look at the following resources:
 
