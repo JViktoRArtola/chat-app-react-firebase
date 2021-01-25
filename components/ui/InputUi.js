@@ -24,4 +24,5 @@ export const Button = styled.button`
     border: none;
     height: 50px;
     margin-left: -48px;
+    border-radius: 4px;
 `;

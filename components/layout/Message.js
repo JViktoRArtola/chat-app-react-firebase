@@ -1,28 +1,38 @@
 import React from 'react';
+import {
+    MessageBoxBlue,
+    MessageBoxLight,
+    MessageContainerLeft,
+    MessageContainerRight,
+    MessageTextDark,
+    MessageTextWhite,
+    TimeLeft,
+    TimeRight
+} from "../ui/MessageUi";
 
 const Message = ({owner, user, message, date}) => {
     const humanDate = new Date(date.seconds * 1000).toLocaleString()
     return (
-        <div>
+        <>
             {user === owner
                 ? (
-                    <div className="messageContainer justifyEnd">
-                        <p className="sentText pr-10">{humanDate}</p>
-                        <div className="messageBox backgroundBlue">
-                            <p className="messageText colorWhite">{message}</p>
-                        </div>
-                    </div>
+                    <MessageContainerRight>
+                        <TimeRight>{humanDate}</TimeRight>
+                        <MessageBoxBlue>
+                            <MessageTextWhite>{message}</MessageTextWhite>
+                        </MessageBoxBlue>
+                    </MessageContainerRight>
                 )
                 : (
-                    <div className="messageContainer justifyStart">
-                        <div className="messageBox backgroundLight">
-                            <p className="messageText colorDark">{message}</p>
-                        </div>
-                        <p className="sentText pl-10">{humanDate}</p>
-                    </div>
+                    <MessageContainerLeft>
+                        <MessageBoxLight>
+                            <MessageTextDark>{message}</MessageTextDark>
+                        </MessageBoxLight>
+                        <TimeLeft>{humanDate}</TimeLeft>
+                    </MessageContainerLeft>
                 )
             }
-        </div>
+        </>
     );
 };
 

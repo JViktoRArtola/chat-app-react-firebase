@@ -6,6 +6,7 @@ export const Float = styled.div`
     top: 1.5rem;
     right: .9rem;
 `;
+
 export const Container = styled.div`
   position: fixed;
   top: 0;
@@ -18,7 +19,6 @@ export const Container = styled.div`
   align-items: center;
     display: block;
 `;
-
 
 export const Section = styled.section`
   position:fixed;
@@ -43,7 +43,6 @@ export const Bar = styled.div`
   justify-content: space-around;
   padding: 15px 0;
 `;
-
 
 export const Cancel = styled.button`
   padding-left: 20px;

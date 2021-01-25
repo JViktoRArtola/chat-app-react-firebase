@@ -2,6 +2,13 @@ import React, {useEffect} from 'react';
 import Message from "./Message";
 import {Input} from "./Input";
 import useMessages from "../../hooks/useMessages";
+import styled from "styled-components";
+
+export const Scrollable = styled.div`
+   height: 88vh;
+   overflow-y: scroll;
+   padding: 2% 0;
+`;
 
 const Messages = ({filter, user}) => {
     const {messages} = useMessages('date', filter)
@@ -12,15 +19,13 @@ const Messages = ({filter, user}) => {
 
     return (
         messages ?
-            <div id='scrollable' style={{height: '88vh', overflowY: 'scroll', padding: '2% 0'}}>
-                <div >
-                    {messages.filter(item => item.id !== 'Status').map((message, i) =>
-                        <Message key={i} message={message.text} owner={message.uid} user={user.uid} date={message.date}/>
-                    )}
-                </div>
+            <Scrollable id='scrollable'>
+                {messages.filter(item => item.id !== 'Status').map((message, i) =>
+                    <Message key={i} message={message.text} owner={message.uid} user={user.uid} date={message.date}/>
+                )}
                 <Input filter={filter} uid={user.uid}/>
-            </div> :
-           null
+            </Scrollable> :
+            null
     );
 };
 
