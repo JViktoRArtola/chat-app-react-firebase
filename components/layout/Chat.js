@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import useUsers from "../../hooks/useUsers";
 import FirebaseContext from "../../firebase/context";
-import styles from '../../styles/Chat.module.css'
 import Messages from "./Messages";
 import useOnline from "../../hooks/useOnline";
 import Logout from "./Logout";
+import {Container, LateralBar, LeftContainer, Text, Title, Touchable} from "../ui/ChatUi";
 
 export const Chat = () => {
     const {users} = useUsers('users');
@@ -47,23 +47,23 @@ export const Chat = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <Container>
             <Logout show={modal} setModal={setModal}/>
-            <div className={styles.lateral}>
-                <h2 className={styles.title}>Contacts</h2>
-                <div className={styles.leftContainer}>
+            <LateralBar>
+                <Title>Contacts</Title>
+                <LeftContainer>
                     {users.filter(item => item.email !== user.email).map((item, index) => (
-                        <p className={styles.text} key={index}>
-                            <button className={styles.touchable} onClick={() => createThread(item.uid)}>
+                        <Text key={index}>
+                            <Touchable onClick={() => createThread(item.uid)}>
                                 {item.status ? <span> 🟢 </span> : <span> 🔴 </span>}
                                 {item.name}
-                            </button>
-                        </p>
+                            </Touchable>
+                        </Text>
                     ))}
-                </div>
-            </div>
+                </LeftContainer>
+            </LateralBar>
             {collection && <Messages filter={final} user={user}/>}
-        </div>
+        </Container>
 
     )
 };
