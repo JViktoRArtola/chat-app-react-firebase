@@ -1,0 +1,55 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 2rem;
+    height: auto;
+    position: relative;
+    background-image: url('/whatsapp.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.out {
+    position: absolute;
+    top: 1.5rem;
+    right: .9rem;
+}
+
+.button {
+    padding: 1.1em 0.8em;
+    border-radius: 20em;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.lateral {
+    border-right: 1px solid #007730
+}
+
+.leftContainer {
+    background-color: rgba(58, 83, 53, 0.53);
+    height: 90.5vh;
+    overflow-y: scroll;
+    border-top: 1px solid #007730
+}
+
+.touchable {
+    padding: 4px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.text {
+    font-size: 1.2rem;
+}
