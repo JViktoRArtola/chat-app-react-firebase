@@ -1,10 +1,12 @@
 import React from 'react';
-import Head from "next/head";
+import Helmet from "react-helmet";
 
 const Layout = props => {
     return (
         <>
-            <Head>
+            <Helmet htmlAttributes={{
+                lang: "en"
+            }}>
                 <title>Chat React</title>
                 <link rel="icon" href="/favicon.ico"/>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -12,7 +14,7 @@ const Layout = props => {
                       crossOrigin="anonymous"/>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
                 <meta name='description' content="Web Chat created with Next Js and Google Firebase"/>
-            </Head>
+            </Helmet>
             <main>
                 {props.children}
             </main>
