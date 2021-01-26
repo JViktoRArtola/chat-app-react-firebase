@@ -1,9 +1,13 @@
 const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+const withImages = require('next-pwa')
+const withSaas = require('next-pwa')
+const withPlugins = require('next-pwa')
 
-module.exports = withPWA({
+const prod = process.env.NODE_ENV === 'production'
+
+module.exports = withPlugins([[withSaas], [withPWA], [withImages]], {
     pwa: {
-        dest: 'public',
-        runtimeCaching,
-    },
+        disable: !prod,
+        dest: 'public'
+    }
 })
