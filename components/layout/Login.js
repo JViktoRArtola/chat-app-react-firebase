@@ -50,8 +50,7 @@ export default function Home() {
                     </div>
                     <Button type="submit">Sign In</Button>
                     <h4 style={{color: '#fff'}}>
-                        Don't have an account yet? <Link style={{color: '#d71515'}} href='/signup'>Register
-                        now</Link></h4>
+                        Don't have an account yet ? <Link href='/signup'>Register now</Link></h4>
                     {error && <Error>{error} </Error>}
                 </Form>
             </div>

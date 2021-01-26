@@ -6,7 +6,7 @@ import validateSignUp from "../validations/validateSignUp";
 import firebase from "../firebase";
 import Router from "next/router";
 import Button from "../components/ui/Button";
-import {v4, v4 as uuidv4} from 'uuid';
+import Link from "next/link";
 
 const INITIAL_STATE = {
     name: '',
@@ -57,6 +57,8 @@ const SignUp = () => {
                         {errors.password2 && <Error>{errors.password2}</Error>}
                     </div>
                     <Button type="submit">Sign Up</Button>
+                    <h4 style={{color: '#fff'}}>
+                       Already registered ? <Link href='/'>Back and Login</Link></h4>
                 </Form>
             </div>
         </Layout>
