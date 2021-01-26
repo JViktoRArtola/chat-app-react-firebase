@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 20%;
+  width: auto;
 `;
 
 export const Error = styled.p`

@@ -21,25 +21,11 @@ html, body {
   background-color: #1A1A1D;
 }
 
-.joinInnerContainer {
-  width: 20%;
-}
-
 .heading {
   color: white;
   font-size: 2.5em;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .joinOuterContainer {
-    height: 100%;
-  }
-
-  .joinInnerContainer {
-    width: 90%;
-  }
 }
 
 button:focus {

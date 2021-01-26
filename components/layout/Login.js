@@ -36,7 +36,6 @@ export default function Home() {
         <>
             <div className="joinOuterContainer">
                 <Form onSubmit={handleSubmit}>
-
                     <h1 className="heading">Join</h1>
                     <div>
                         <Input id="email" name="email" placeholder="Email" type="text" value={email}
