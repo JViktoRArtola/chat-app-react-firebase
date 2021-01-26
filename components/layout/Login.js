@@ -38,18 +38,21 @@ export default function Home() {
                 <Form onSubmit={handleSubmit}>
                     <h1 className="heading">Join</h1>
                     <div>
+                        <label style={{display: 'none'}} htmlFor="email">Email</label>
                         <Input id="email" name="email" placeholder="Email" type="text" value={email}
                                onChange={handleChange} onBlur={handleBlur}/>
                         {errors.email && <Error>{errors.email}</Error>}
                     </div>
                     <div>
+                        <label style={{display: 'none'}} htmlFor="password">Password</label>
                         <Input id="password" name="password" placeholder="Password" type="password" value={password}
                                onChange={handleChange} onBlur={handleBlur}/>
                         {errors.password && <Error>{errors.password}</Error>}
                     </div>
                     <Button type="submit">Sign In</Button>
                     <h4 style={{color: '#fff'}}>
-                        Don't have an account yet ? <Link href='/signup'>Register now</Link></h4>
+                        <section>Don't have an account yet ? <Link href='/signup'>Register now</Link></section>
+                    </h4>
                     {error && <Error>{error} </Error>}
                 </Form>
             </div>
