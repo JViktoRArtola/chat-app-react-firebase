@@ -5,6 +5,7 @@ import firebase from "../../firebase";
 import useValidation from "../../hooks/useValidation";
 import validateLogin from "../../validations/validateLogin";
 import Link from "next/link";
+import Spinner from "./Spinner";
 
 const INITIAL_STATE = {
     email: '',
@@ -15,11 +16,17 @@ export default function Home() {
     const [error, setError] = useState(false);
     const {values, errors, handleSubmit, handleChange, handleBlur} = useValidation(INITIAL_STATE, validateLogin, startLogin);
     const {email, password} = values;
+    const [loading, setLoading] = useState(false);
+
+    if (loading) return <Spinner/>
 
     async function startLogin() {
         try {
+            setLoading(true)
             await firebase.login(email, password);
+
         } catch (error) {
+            setLoading(false)
             console.error('Login Error ', error.message);
             setError(error.message);
         }
@@ -28,8 +35,8 @@ export default function Home() {
     return (
         <>
             <div className="joinOuterContainer">
-                {error && <Error>{error} </Error>}
                 <Form onSubmit={handleSubmit}>
+
                     <h1 className="heading">Join</h1>
                     <div>
                         <Input id="email" name="email" placeholder="Email" type="text" value={email}
@@ -45,6 +52,7 @@ export default function Home() {
                     <h4 style={{color: '#fff'}}>
                         Don't have an account yet? <Link style={{color: '#d71515'}} href='/signup'>Register
                         now</Link></h4>
+                    {error && <Error>{error} </Error>}
                 </Form>
             </div>
         </>
